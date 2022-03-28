@@ -5,6 +5,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { DataViewModule } from 'primeng/dataview';
 
 @NgModule({
   imports: [
@@ -14,6 +15,7 @@ import { MatCardModule } from '@angular/material/card';
     MatIconModule,
     MatButtonModule,
     MatCardModule,
+    DataViewModule,
   ],
   exports: [
     MatDialogModule,
@@ -22,6 +24,7 @@ import { MatCardModule } from '@angular/material/card';
     MatIconModule,
     MatButtonModule,
     MatCardModule,
+    DataViewModule,
   ],
 })
 export class MaterialModule {}

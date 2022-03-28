@@ -20,6 +20,13 @@ import { DetailComponent } from './user/detail/detail.component';
 import { AddedCoursesComponent } from './admin/added-courses/added-courses.component';
 import { AddNewCourseComponent } from './admin/add-new-course/add-new-course.component';
 import { DatePipe } from '@angular/common';
+import { CourseDetailComponent } from './courses/course-detail/course-detail.component';
+import { CourseApplyComponent } from './courses/course-apply/course-apply.component';
+import { ViewCourseComponent } from './admin/view-course/view-course.component';
+import { ContactComponent } from './contact/contact.component';
+import { AddAdminComponent } from './admin/add-admin/add-admin.component';
+import { ViewAllAdminComponent } from './admin/view-all-admin/view-all-admin.component';
+import { ShowMessagesComponent } from './admin/show-messages/show-messages.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +41,13 @@ import { DatePipe } from '@angular/common';
     DetailComponent,
     AddedCoursesComponent,
     AddNewCourseComponent,
+    CourseDetailComponent,
+    CourseApplyComponent,
+    ViewCourseComponent,
+    ContactComponent,
+    AddAdminComponent,
+    ViewAllAdminComponent,
+    ShowMessagesComponent,
   ],
   imports: [
     BrowserModule,

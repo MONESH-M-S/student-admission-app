@@ -1,0 +1,70 @@
+<p-toast></p-toast>
+<section>
+  <div class="grid p-fluid">
+    <div class="col-12">
+      <div class="p-inputgroup">
+        <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+        <input
+          type="text"
+          pInputText
+          placeholder="Your Name"
+          formControlName="userName"
+        />
+      </div>
+    </div>
+    <div class="col-12">
+      <div class="p-inputgroup">
+        <span class="p-inputgroup-addon"><i class="pi pi-at"></i></span>
+        <input
+          type="text"
+          pInputText
+          placeholder="Your Email"
+          formControlName="email"
+        />
+      </div>
+    </div>
+    <!-- <div class="col-12">
+      <p-fileUpload
+        mode="basic"
+        name="demo"
+        accept="image/*"
+        maxFileSize="5000000"
+        customUpload="true"
+        (uploadHandler)="onUpload($event)"
+        chooseLabel="Aadhar card"
+        [auto]="true"
+      >
+      </p-fileUpload>
+    </div> -->
+    <!-- <div class="col-12">
+    <p-fileUpload
+      #fubauto
+      mode="basic"
+      name="demo[]"
+      accept="image/*"
+      maxFileSize="1000000"
+      (onUpload)="onUpload($event)"
+      [auto]="true"
+      chooseLabel="Aadhar card"
+    ></p-fileUpload>
+  </div> -->
+  </div>
+  <div class="col-12">
+    <button
+      pButton
+      pRipple
+      type="button"
+      label="Submit"
+      class="p-button-success mr-2"
+      [disabled]="form.invalid"
+      (click)="onSubmit()"
+    ></button>
+    <button
+      pButton
+      pRipple
+      type="button"
+      label="Clear"
+      class="p-button-danger mr-2"
+    ></button>
+  </div>
+</section>

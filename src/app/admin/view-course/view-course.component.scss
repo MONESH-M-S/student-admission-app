@@ -1,0 +1,16 @@
+section {
+  mat-card {
+    margin: auto;
+    min-height: 80vh;
+
+    .download {
+      margin-top: -5px;
+    }
+    mat-card-content {
+      .name {
+        text-transform: capitalize;
+        font-weight: 500;
+      }
+    }
+  }
+}

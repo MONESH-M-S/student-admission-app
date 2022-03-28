@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AdminService } from '../admin.service';
 
 @Component({
@@ -12,7 +12,8 @@ export class AddedCoursesComponent implements OnInit {
   isCourseAvailable = false;
   constructor(
     private adminService: AdminService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -26,10 +27,13 @@ export class AddedCoursesComponent implements OnInit {
               this.availableCourses = res.courses;
             } else {
               this.isCourseAvailable = false;
-
             }
           });
       }
     });
+  }
+
+  onViewCourse(id: string) {
+    this.router.navigate([`a/c/${id}`]);
   }
 }

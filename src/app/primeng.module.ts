@@ -11,6 +11,8 @@ import { CalendarModule } from 'primeng/calendar';
 import { EditorModule } from 'primeng/editor';
 import { TableModule } from 'primeng/table';
 import { TooltipModule } from 'primeng/tooltip';
+import { FileUploadModule } from 'primeng/fileupload';
+import { InputTextareaModule } from 'primeng/inputtextarea';
 
 @NgModule({
   imports: [
@@ -26,6 +28,8 @@ import { TooltipModule } from 'primeng/tooltip';
     EditorModule,
     TableModule,
     TooltipModule,
+    FileUploadModule,
+    InputTextareaModule,
   ],
   exports: [
     SidebarModule,
@@ -40,6 +44,8 @@ import { TooltipModule } from 'primeng/tooltip';
     EditorModule,
     TableModule,
     TooltipModule,
+    FileUploadModule,
+    InputTextareaModule,
   ],
 })
 export class PrimengModule {}

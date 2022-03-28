@@ -27,4 +27,39 @@ export class AdminService {
       form
     );
   }
+
+  getCourseDetailById(id: string) {
+    return this.http.get<{ course: any; message: string }>(
+      `${this.BACKEND_URL}course/${id}`
+    );
+  }
+
+  getRegistrationDetailsById(id: string) {
+    return this.http.get<{ registers: any; message: string }>(
+      `${this.BACKEND_URL}register/${id}`
+    );
+  }
+
+  addNewAdmin(form: any) {
+    return this.http.post<{ user: any; message: string }>(
+      `${this.BACKEND_URL}user/signup`,
+      form
+    );
+  }
+
+  getAllAdmins() {
+    return this.http.get<{ admins: any; message: string }>(
+      `${this.BACKEND_URL}user/admins`
+    );
+  }
+
+  getMessage() {
+    return this.http.get<{ message: any }>(`${this.BACKEND_URL}contact/`);
+  }
+
+  deleteMessage(id: string) {
+    return this.http.delete<{ message: any }>(
+      `${this.BACKEND_URL}contact/${id}`
+    );
+  }
 }

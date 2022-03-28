@@ -1,0 +1,67 @@
+<p-toast></p-toast>
+<section>
+  <mat-card class="text-center">
+    <mat-card-title class="mt-5">
+      <h2 class="text-bold text-uppercase">Have Some Questions?</h2>
+      <h2>Feel Free to Contact Us!</h2>
+    </mat-card-title>
+    <mat-card-content
+      class="flex mt-5 text-center flex-column md:flex-row justify-content-center"
+    >
+      <div class="img">
+        <img
+          src="assets/streamline-icon-flying-envelope@400x400.png"
+          alt="Mail Image"
+          [width]="300"
+        />
+      </div>
+      <div class="contact-form mt-5">
+        <form #form="ngForm" (ngSubmit)="onFormSubmited(form)">
+          <div class="field">
+            <input
+              id="name"
+              name="name"
+              type="text"
+              placeholder="Your Name"
+              pInputText
+              ngModel
+              required
+            />
+          </div>
+          <div class="field">
+            <input
+              id="email"
+              type="email"
+              name="email"
+              placeholder="Your Email"
+              pInputText
+              ngModel
+              required
+            />
+          </div>
+          <div class="field">
+            <textarea
+              rows="6"
+              cols="24"
+              pInputTextarea
+              autoResize="autoResize"
+              placeholder="Your Query/Suggestion"
+              ngModel
+              name="message"
+              required
+              minlength="3"
+            ></textarea>
+          </div>
+          <button
+            pButton
+            pRipple
+            type="submit"
+            label="Submit"
+            class="p-button-raised p-button-success"
+            [disabled]="form.invalid"
+          ></button>
+        </form>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</section>

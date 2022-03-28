@@ -1,0 +1,29 @@
+<section>
+  <mat-card>
+    <main>
+      <h1 class="font-semibold">
+        Course Name -
+        <span class="font-bold">{{ courseDetail?.courseName }}</span>
+      </h1>
+      <h2 class="font-semibold">
+        Available Seats -
+        <span class="font-bold">{{ courseDetail?.availableSeats }}</span>
+      </h2>
+      <h2 class="font-semibold">
+        Last Date for Registration -
+        <span class="font-bold">{{ courseDetail?.lastDate | date }}</span>
+      </h2>
+      <h3 class="font-semibold">About the Course:</h3>
+      <div [innerHTML]="courseDetail?.description" class="font-normal"></div>
+      <div class="buttons">
+        <button
+          mat-flat-button
+          color="primary"
+          (click)="onOpenRegisterDialog()"
+        >
+          Apply
+        </button>
+      </div>
+    </main>
+  </mat-card>
+</section>

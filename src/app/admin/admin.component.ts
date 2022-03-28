@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
+import { AddAdminComponent } from './add-admin/add-admin.component';
 import { AdminService } from './admin.service';
 
 @Component({
@@ -16,7 +18,8 @@ export class AdminComponent implements OnInit {
     private adminService: AdminService,
     private route: ActivatedRoute,
     private messageService: MessageService,
-    private router: Router
+    private router: Router,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -48,9 +51,20 @@ export class AdminComponent implements OnInit {
     this.router.navigate([`a/${this.id}/add-course`]);
   }
 
-  showAdminAddDialog() {}
+  showAdminAddDialog() {
+    let dialogRef = this.dialog.open(AddAdminComponent, {
+      data: { id: this.id },
+      width: '450px',
+      hasBackdrop: true,
+      disableClose: true,
+    });
+  }
 
-  showAllAdmin() {}
+  showAllAdmin() {
+    this.router.navigate(['a/show-all']);
+  }
 
-  viewMessages() {}
+  viewMessages() {
+    this.router.navigate(['a/show-messages']);
+  }
 }

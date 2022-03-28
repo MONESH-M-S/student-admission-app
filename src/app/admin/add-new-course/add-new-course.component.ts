@@ -76,6 +76,9 @@ export class AddNewCourseComponent implements OnInit {
           summary: 'Success',
           detail: res.message,
         });
+        window.setTimeout(() => {
+          this.router.navigate([`c`]);
+        }, 2500);
       } else {
         this.messageService.add({
           severity: 'error',
