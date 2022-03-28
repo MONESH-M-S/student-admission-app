@@ -1,0 +1,35 @@
+<section>
+  <div class="close-icon" mat-dialog-actions>
+    <button mat-icon-button color="warn" (click)="onClose()">
+      <mat-icon>cancel</mat-icon>
+    </button>
+  </div>
+  <h1 mat-dialog-title>Welcome User,</h1>
+  <br />
+  <form #form="ngForm" (ngSubmit)="onSubmit(form)">
+    <div mat-dialog-content>
+      <mat-form-field style="width: 90%; margin: auto" appearance="outline">
+        <mat-label>Email</mat-label>
+        <input type="email" name="email" ngModel matInput required />
+      </mat-form-field>
+      <br />
+      <mat-form-field style="width: 90%; margin: auto" appearance="outline">
+        <mat-label>Password</mat-label>
+        <input
+          type="password"
+          name="password"
+          ngModel
+          matInput
+          required
+          minlength="6"
+        />
+      </mat-form-field>
+    </div>
+    <h4>New User? <a (click)="onSignup()">Sign Up</a></h4>
+    <div mat-dialog-actions>
+      <button mat-button color="primary" cdkFocusInitial type="submit">
+        Submit
+      </button>
+    </div>
+  </form>
+</section>
