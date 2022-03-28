@@ -1,0 +1,40 @@
+<header>
+  <div class="flex">
+    <div class="logo flex-none flex align-items-center justify-content-center">
+      <h1 class="font-semibold">LOGO</h1>
+    </div>
+    <div
+      class="title flex-grow-1 flex align-items-center justify-content-center"
+    >
+      <h1 class="font-semibold">Admission App</h1>
+    </div>
+    <div
+      class="block md:hidden flex-none flex align-items-center justify-content-center"
+    >
+      <i
+        class="pi pi-bars"
+        style="font-size: 2rem"
+        (click)="visibleSidebar = true"
+      ></i>
+    </div>
+  </div>
+  <nav class="hidden md:block">
+    <ul class="flex align-items-center justify-content-center">
+      <li class="ml-4 mr-4"><a>Home</a></li>
+      <li class="ml-4 mr-4"><a>Courses</a></li>
+      <li class="ml-4 mr-4"><a>Contact</a></li>
+      <li class="ml-4 mr-4"><a>Login</a></li>
+    </ul>
+  </nav>
+</header>
+
+<p-sidebar [(visible)]="visibleSidebar" position="right" [baseZIndex]="10000">
+  <nav>
+    <ul class="flex flex-column align-items-center" style="list-style: none">
+      <li class="mt-4"><a>Home</a></li>
+      <li class="mt-4"><a>Courses</a></li>
+      <li class="mt-4"><a>Contact</a></li>
+      <li class="mt-4"><a>Login</a></li>
+    </ul>
+  </nav>
+</p-sidebar>
