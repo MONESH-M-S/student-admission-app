@@ -28,13 +28,6 @@ export class CourseService {
     );
   }
 
-  updateCount(id: string, count: number) {
-    return this.http.put<{ course: any; message: string }>(
-      `${this.BACKEND_URL}course/count/`,
-      { count: count, id: id }
-    );
-  }
-
   getUserDetailByEmail(e: string) {
     return this.http.get<{ user: any; message: string }>(
       `${this.BACKEND_URL}user/email/${e}`
@@ -45,6 +38,19 @@ export class CourseService {
     return this.http.post<{ register: any; message: string }>(
       `${this.BACKEND_URL}register/check-registration`,
       { email: email, courseId: courseId }
+    );
+  }
+
+  getRegistrationDetailById(id: string) {
+    return this.http.get<{ register: any; message: string }>(
+      `${this.BACKEND_URL}register/${id}`
+    );
+  }
+
+  updateRegisterationValues(form: any) {
+    return this.http.put<{ register: any; message: string }>(
+      `${this.BACKEND_URL}register/`,
+      form
     );
   }
 }

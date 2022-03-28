@@ -31,7 +31,7 @@ export class UserService {
 
   getUserRegistrationDetail(uerId: string) {
     return this.http.get<{ registers: any; message: string }>(
-      `${this.BACKEND_URL}register/${uerId}/user`
+      `${this.BACKEND_URL}register/u/${uerId}`
     );
   }
 }

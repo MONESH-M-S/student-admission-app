@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../user.service';
 
 @Component({
@@ -12,7 +12,8 @@ export class ShowRegistrationsComponent implements OnInit {
   isRegistrationAvailable = false;
   constructor(
     private route: ActivatedRoute,
-    private userService: UserService
+    private userService: UserService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -30,5 +31,9 @@ export class ShowRegistrationsComponent implements OnInit {
           });
       }
     });
+  }
+
+  onClickedEditRegisteration(rid: string, cid: string, uid: string) {
+    this.router.navigate([`c/${cid}`], { queryParams: { r: rid, u: uid } });
   }
 }

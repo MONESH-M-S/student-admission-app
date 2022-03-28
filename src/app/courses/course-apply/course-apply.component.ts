@@ -3,7 +3,7 @@ import { Inject } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { CourseService } from '../course.service';
 
@@ -19,7 +19,6 @@ export class CourseApplyComponent implements OnInit {
   isLoading = false;
   constructor(
     private courseService: CourseService,
-    private route: ActivatedRoute,
     private router: Router,
     private formBuilder: FormBuilder,
     private dialogRef: MatDialogRef<CourseApplyComponent>,
@@ -29,10 +28,16 @@ export class CourseApplyComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this._initForm();
+    this._initForm(null);
+    if (this.data.registerationDetail) {
+      this._initForm(this.data.registerationDetail);
+    }
   }
 
   onSubmit() {
+    if (this.data.registerationDetail) {
+      return this._afterEditedSubmitForm();
+    }
     this.isLoading = true;
     if (this.form.invalid) return;
     this.courseService
@@ -58,13 +63,6 @@ export class CourseApplyComponent implements OnInit {
               if (res.register === null) {
                 this.courseService.registerForACourse(f).subscribe((res) => {
                   if (res.register != null) {
-                    let count = +this.data.courseDetail.count;
-                    count += 1;
-                    this.courseService
-                      .updateCount(this.data.courseDetail._id, count)
-                      .subscribe((res) => {
-                        console.log(res);
-                      });
                     this.messageService.add({
                       severity: 'success',
                       summary: 'Success',
@@ -86,7 +84,6 @@ export class CourseApplyComponent implements OnInit {
                 });
               } else {
                 this.isLoading = false;
-
                 this.messageService.add({
                   severity: 'error',
                   summary: 'Error',
@@ -121,10 +118,68 @@ export class CourseApplyComponent implements OnInit {
   //   reader.readAsDataURL(file);
   // }
 
-  private _initForm() {
-    this.form = this.formBuilder.group({
-      userName: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-    });
+  private _initForm(f: any) {
+    if (f == null) {
+      this.form = this.formBuilder.group({
+        userName: ['', Validators.required],
+        email: ['', [Validators.required, Validators.email]],
+      });
+    } else {
+      this.form = this.formBuilder.group({
+        userName: [f.userName, Validators.required],
+        email: [f.email, [Validators.required, Validators.email]],
+      });
+    }
+  }
+
+  private _afterEditedSubmitForm() {
+    this.isLoading = true;
+    const value = {
+      userName: this.form.value.userName,
+      email: this.form.value.email,
+      rid: this.data.registerationDetail._id,
+    };
+    this.courseService
+      .getUserDetailByEmail(this.form.value.email)
+      .subscribe((res) => {
+        if (res.user != null) {
+          this.courseService
+            .updateRegisterationValues(value)
+            .subscribe((res) => {
+              if (res.register) {
+                this.messageService.add({
+                  severity: 'success',
+                  summary: 'Success',
+                  detail: res.message,
+                });
+                window.setTimeout(() => {
+                  this.isLoading = false;
+                  this.dialogRef.close();
+                }, 2500);
+              } else {
+                this.messageService.add({
+                  severity: 'error',
+                  summary: 'Error',
+                  detail: res.message,
+                });
+                window.setTimeout(() => {
+                  this.isLoading = false;
+                  this.dialogRef.close();
+                }, 2500);
+              }
+            });
+        } else {
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Error',
+            detail: res.message,
+          });
+          return window.setTimeout(() => {
+            this.isLoading = false;
+            this.dialogRef.close();
+            this.router.navigate(['u/signup']);
+          }, 3000);
+        }
+      });
   }
 }

@@ -29,15 +29,39 @@ export class ViewRegistrationDetailComponent implements OnInit {
       .updateRegisterStatus(this.data.register._id, this.selectedStatus)
       .subscribe((res) => {
         if (res.register != null) {
-          window.setTimeout(() => {
-            this.dialogRef.close();
-            this.isLoading = false;
-          }, 2500);
-          this.messageService.add({
-            severity: 'success',
-            summary: 'Success',
-            detail: res.message,
-          });
+          if (this.selectedStatus === 'Accept') {
+            this.adminService
+              .getCourseDetailById(res.register.courseId)
+              .subscribe((res) => {
+                if (res.course != null) {
+                  let count = +res.course.count;
+                  count += 1;
+
+                  this.adminService
+                    .updateCount(res.course._id, count)
+                    .subscribe((res) => {
+                      if (res.course) {
+                        this.messageService.add({
+                          severity: 'success',
+                          summary: 'Success',
+                          detail: res.message,
+                        });
+                        window.setTimeout(() => {
+                          this.isLoading = false;
+                          this.dialogRef.close();
+                        }, 2500);
+                      }
+                    });
+                } else {
+                  this.messageService.add({
+                    severity: 'error',
+                    summary: 'Error',
+                    detail: res.message,
+                  });
+                  this.isLoading = false;
+                }
+              });
+          }
         } else {
           this.messageService.add({
             severity: 'error',

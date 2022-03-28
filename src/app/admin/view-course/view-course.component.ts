@@ -50,8 +50,8 @@ export class ViewCourseComponent implements OnInit {
 
   onViewRegistrationDialog(id: string) {
     this.adminService.getRegistrationDetailById(id).subscribe((res) => {
-      if (res.register != []) {
-        const data = res.register[0];
+      if (res.register != null) {
+        const data = res.register;
         let dialogRef = this.dialog.open(ViewRegistrationDetailComponent, {
           data: { register: data },
           width: '500px',
@@ -59,6 +59,11 @@ export class ViewCourseComponent implements OnInit {
           hasBackdrop: true,
         });
         dialogRef.afterClosed().subscribe((res) => {
+          this.adminService.getCourseDetailById(this.id).subscribe((res) => {
+            if (res.course) {
+              this.courseDetail = res.course;
+            }
+          });
           this.adminService
             .getRegistrationDetailsByCourseId(this.id)
             .subscribe((res) => {

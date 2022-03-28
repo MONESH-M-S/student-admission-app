@@ -75,4 +75,11 @@ export class AdminService {
       { id: id, status: status }
     );
   }
+
+  updateCount(id: string, count: number) {
+    return this.http.put<{ course: any; message: string }>(
+      `${this.BACKEND_URL}course/count/`,
+      { count: count, id: id }
+    );
+  }
 }
