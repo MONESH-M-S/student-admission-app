@@ -29,6 +29,7 @@ import { ViewAllAdminComponent } from './admin/view-all-admin/view-all-admin.com
 import { ShowMessagesComponent } from './admin/show-messages/show-messages.component';
 import { ShowRegistrationsComponent } from './user/show-registrations/show-registrations.component';
 import { ViewRegistrationDetailComponent } from './admin/view-course/view-registration-detail/view-registration-detail.component';
+import { HeroComponent } from './home/hero/hero.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { ViewRegistrationDetailComponent } from './admin/view-course/view-regist
     ShowMessagesComponent,
     ShowRegistrationsComponent,
     ViewRegistrationDetailComponent,
+    HeroComponent,
   ],
   imports: [
     BrowserModule,
