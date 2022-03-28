@@ -1,0 +1,47 @@
+mat-card {
+  width: 100%;
+  margin: auto;
+  height: 80vh;
+
+  mat-card-actions {
+    text-align: right;
+    margin-right: 20px;
+    margin-bottom: 0;
+    mat-icon {
+      margin-top: -3px;
+    }
+  }
+
+  mat-card-content {
+    width: 90%;
+    margin: auto;
+    display: flex;
+    .img {
+      img {
+        width: 160px;
+      }
+    }
+    .detail {
+      h2 {
+        margin-top: 55px;
+        margin-bottom: 0;
+        font-size: 24px;
+        font-weight: 600;
+        letter-spacing: 1.2px;
+      }
+
+      h4 {
+        font-size: 18px;
+        font-weight: 500;
+      }
+    }
+  }
+
+  .add-event {
+    text-align: center;
+
+    mat-icon {
+      margin-top: -3px;
+    }
+  }
+}

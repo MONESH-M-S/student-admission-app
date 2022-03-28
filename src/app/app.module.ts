@@ -17,6 +17,9 @@ import { MessageService } from 'primeng/api';
 import { SignupComponent } from './user/signup/signup.component';
 import { HttpClientModule } from '@angular/common/http';
 import { DetailComponent } from './user/detail/detail.component';
+import { AddedCoursesComponent } from './admin/added-courses/added-courses.component';
+import { AddNewCourseComponent } from './admin/add-new-course/add-new-course.component';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -29,6 +32,8 @@ import { DetailComponent } from './user/detail/detail.component';
     UserComponent,
     SignupComponent,
     DetailComponent,
+    AddedCoursesComponent,
+    AddNewCourseComponent,
   ],
   imports: [
     BrowserModule,
@@ -40,7 +45,7 @@ import { DetailComponent } from './user/detail/detail.component';
     ReactiveFormsModule,
     HttpClientModule,
   ],
-  providers: [MessageService],
+  providers: [MessageService, DatePipe],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

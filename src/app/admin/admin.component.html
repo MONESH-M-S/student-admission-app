@@ -1,1 +1,63 @@
-<p>admin works!</p>
+<p-toast></p-toast>
+<mat-card>
+  <mat-card-actions>
+    <button
+      mat-stroked-button
+      color="primary"
+      (click)="showAdminAddDialog()"
+      pTooltip="Click to add a new Admin"
+      tooltipPosition="bottom"
+    >
+      <mat-icon>add</mat-icon> Add New Admin
+    </button>
+    <button
+      mat-stroked-button
+      color="accent"
+      (click)="showAllAdmin()"
+      pTooltip="Click to view all other Admin(s)"
+      tooltipPosition="bottom"
+    >
+      <mat-icon> insert_drive_file</mat-icon> Show All Admin(s)
+    </button>
+    <button
+      mat-stroked-button
+      color="warn"
+      (click)="viewMessages()"
+      pTooltip="Click to view Messages - Contact form"
+      tooltipPosition="bottom"
+    >
+      <mat-icon> message</mat-icon> Message(s)
+    </button>
+  </mat-card-actions>
+  <mat-card-content>
+    <div class="img">
+      <img
+        pTooltip="Verified Admin"
+        tooltipPosition="top"
+        src="assets/streamline-icon-user-secure@400x400.png"
+        alt="Admin"
+      />
+    </div>
+    <div class="detail">
+      <h2>
+        {{ adminDetails?.name | titlecase }}
+      </h2>
+      <h4>( {{ adminDetails?.email }} )</h4>
+    </div>
+  </mat-card-content>
+
+  <div class="add-event">
+    <button
+      mat-stroked-button
+      color="primary"
+      (click)="addNewEvent()"
+      pTooltip="Add a New Event"
+      tooltipPosition="top"
+    >
+      <mat-icon>add_circle</mat-icon> Add New Course
+    </button>
+  </div>
+  <div class="table">
+    <app-added-courses></app-added-courses>
+  </div>
+</mat-card>

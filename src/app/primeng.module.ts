@@ -7,6 +7,10 @@ import { InputTextModule } from 'primeng/inputtext';
 import { InputMaskModule } from 'primeng/inputmask';
 import { ButtonModule } from 'primeng/button';
 import { DropdownModule } from 'primeng/dropdown';
+import { CalendarModule } from 'primeng/calendar';
+import { EditorModule } from 'primeng/editor';
+import { TableModule } from 'primeng/table';
+import { TooltipModule } from 'primeng/tooltip';
 
 @NgModule({
   imports: [
@@ -18,6 +22,10 @@ import { DropdownModule } from 'primeng/dropdown';
     InputMaskModule,
     ButtonModule,
     DropdownModule,
+    CalendarModule,
+    EditorModule,
+    TableModule,
+    TooltipModule,
   ],
   exports: [
     SidebarModule,
@@ -28,6 +36,10 @@ import { DropdownModule } from 'primeng/dropdown';
     InputMaskModule,
     ButtonModule,
     DropdownModule,
+    CalendarModule,
+    EditorModule,
+    TableModule,
+    TooltipModule,
   ],
 })
 export class PrimengModule {}

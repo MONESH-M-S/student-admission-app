@@ -42,7 +42,6 @@ export class UserComponent implements OnInit {
       const data = { email: form.value.email, password: form.value.password };
 
       this.userService.userLogin(data).subscribe((res) => {
-        console.log(res);
         if (res.user == null) {
           return this.messageService.add({
             severity: 'error',

@@ -1,0 +1,111 @@
+<p-toast></p-toast>
+<p-progressSpinner *ngIf="isLoading"></p-progressSpinner>
+<section>
+  <mat-card>
+    <mat-card-title>
+      <h2 class="font-semibold">You Can Add a New Course Here,</h2>
+    </mat-card-title>
+    <mat-card-content>
+      <div class="grid">
+        <div class="col-12">
+          <form [formGroup]="form">
+            <div class="p-fluid p-formgrid grid">
+              <div class="field col-12 md:col-6">
+                <label for="name">Course Name</label>
+                <input
+                  formControlName="courseName"
+                  id="name"
+                  type="text"
+                  pInputText
+                />
+                <small
+                  *ngIf="form.touched && !form.get('courseName').value"
+                  class="p-error"
+                  >Course Name is required</small
+                >
+              </div>
+              <div class="field col-12 md:col-6">
+                <label for="availableSeats">Available Seats</label>
+                <input
+                  formControlName="availableSeats"
+                  id="availableSeats"
+                  type="number"
+                  pInputText
+                />
+                <small
+                  *ngIf="form.touched && !form.get('availableSeats').value"
+                  class="p-error"
+                  >Available Seats is required</small
+                >
+              </div>
+              <div class="field col-12 md:col-6">
+                <label for="dateformat">Last Date For Registeration</label>
+                <p-calendar
+                  formControlName="lastDate"
+                  dateFormat="dd-mm-yy"
+                  inputId="dateformat"
+                ></p-calendar>
+                <small
+                  *ngIf="form.touched && !form.get('lastDate').value"
+                  class="p-error"
+                  >Last Date is required</small
+                >
+              </div>
+              <div class="field col-12">
+                <label for="description"
+                  >Describe About the Event (Enter the available events & rules
+                  here) </label
+                ><br />
+                <p-editor
+                  id="description"
+                  formControlName="description"
+                  [style]="{ height: '120px' }"
+                >
+                  <ng-template pTemplate="header">
+                    <span class="ql-formats">
+                      <button
+                        type="button"
+                        class="ql-bold"
+                        aria-label="Bold"
+                      ></button>
+                      <button
+                        type="button"
+                        class="ql-italic"
+                        aria-label="Italic"
+                      ></button>
+                      <button
+                        type="button"
+                        class="ql-underline"
+                        aria-label="Underline"
+                      ></button>
+                    </span> </ng-template
+                ></p-editor>
+              </div>
+            </div>
+            <button
+              pButton
+              pRipple
+              type="button"
+              label="Submit"
+              class="p-button-raised p-button-success mr-4"
+              (click)="onSubmit()"
+              [disabled]="form.invalid"
+              *ngIf="!isLoading"
+            ></button>
+            <button
+              pButton
+              pRipple
+              type="button"
+              label="Clear"
+              class="p-button-raised p-button-danger mr-4"
+              (click)="clearForm()"
+              pTooltip="Clear Form"
+              tooltipPosition="top"
+              *ngIf="!isLoading"
+            ></button>
+          </form>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</section>
