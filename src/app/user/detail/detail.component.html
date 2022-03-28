@@ -1,1 +1,54 @@
-<p>detail works!</p>
+<p-progressSpinner *ngIf="isLoading"></p-progressSpinner>
+<section *ngIf="!isLoading">
+  <mat-card class="mat-card">
+    <mat-card-content>
+      <div class="img">
+        <img
+          *ngIf="userDetail?.gender === 'Male'"
+          src="assets/streamline-icon-avatar-5@400x400.png"
+          alt=""
+        />
+        <img
+          *ngIf="userDetail?.gender === 'Female'"
+          src="assets/streamline-icon-avatar-2@400x400.png"
+          alt=""
+        />
+        <img
+          *ngIf="!userDetail?.gender"
+          src="assets/streamline-icon-avatar-neutral@400x400.png"
+          alt=""
+        />
+      </div>
+      <div class="user-data">
+        <h3>{{ userDetail?.name }}</h3>
+        <h5>( {{ userDetail?.email }} )</h5>
+        <h5>( {{ userDetail?.phone }} )</h5>
+      </div>
+      <div class="events">
+        <h4>Registered Courses: {{ totalNoOfRegistration }}</h4>
+        <p>To View All Your Registerations,</p>
+        <a (click)="onClickRegistrationDetail()">Click Here</a>
+      </div>
+      <div class="button">
+        <button
+          mat-stroked-button
+          pTooltip="Edit My Details"
+          tooltipPosition="bottom"
+          color="primary"
+          (click)="editUserDetails()"
+        >
+          <mat-icon>edit</mat-icon> <span>Edit</span>
+        </button>
+        <button
+          mat-stroked-button
+          pTooltip="Delete My Account"
+          tooltipPosition="bottom"
+          color="warn"
+          (click)="onDeleteUser()"
+        >
+          <mat-icon>delete_forever</mat-icon> <span>Delete</span>
+        </button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</section>

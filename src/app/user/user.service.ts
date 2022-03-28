@@ -22,4 +22,16 @@ export class UserService {
       form
     );
   }
+
+  getUserDetailById(id: string) {
+    return this.http.get<{ user: any; message: string }>(
+      `${this.BACKEND_URL}user/${id}`
+    );
+  }
+
+  getUserRegistrationDetail(uerId: string) {
+    return this.http.get<{ registers: any; message: string }>(
+      `${this.BACKEND_URL}register/${uerId}/user`
+    );
+  }
 }

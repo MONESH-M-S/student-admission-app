@@ -27,6 +27,7 @@ import { ContactComponent } from './contact/contact.component';
 import { AddAdminComponent } from './admin/add-admin/add-admin.component';
 import { ViewAllAdminComponent } from './admin/view-all-admin/view-all-admin.component';
 import { ShowMessagesComponent } from './admin/show-messages/show-messages.component';
+import { ShowRegistrationsComponent } from './user/show-registrations/show-registrations.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { ShowMessagesComponent } from './admin/show-messages/show-messages.compo
     AddAdminComponent,
     ViewAllAdminComponent,
     ShowMessagesComponent,
+    ShowRegistrationsComponent,
   ],
   imports: [
     BrowserModule,

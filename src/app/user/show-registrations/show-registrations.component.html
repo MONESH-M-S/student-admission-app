@@ -1,0 +1,45 @@
+<section>
+  <mat-card>
+    <h1 *ngIf="!isRegistrationAvailable" class="font-bold mt-5 text-center">
+      No Event You Registered, Till Now!
+    </h1>
+    <div
+      class="card"
+      styleClass="p-datatable-striped"
+      *ngIf="isRegistrationAvailable"
+    >
+      <p-table
+        responsiveLayout="scroll"
+        [value]="registrationDetail"
+        [scrollable]="true"
+        scrollHeight="480px"
+      >
+        <ng-template pTemplate="caption"> Courses You Registered,</ng-template>
+        <ng-template pTemplate="header" let-columns>
+          <tr>
+            <th pSortableColumn="courseName">
+              Course Name <p-sortIcon field="courseName"></p-sortIcon>
+            </th>
+            <th pSortableColumn="registeredAt">
+              Registered Date<p-sortIcon field="registeredAt"></p-sortIcon>
+            </th>
+            <th>Status</th>
+            <th></th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-register let-columns="columns">
+          <tr>
+            <td>
+              {{ register.courseName }}
+            </td>
+            <td>
+              {{ register.registeredAt }}
+            </td>
+            <td></td>
+            <td></td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+  </mat-card>
+</section>
