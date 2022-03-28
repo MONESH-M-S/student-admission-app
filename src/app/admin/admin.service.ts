@@ -34,9 +34,9 @@ export class AdminService {
     );
   }
 
-  getRegistrationDetailsById(id: string) {
+  getRegistrationDetailsByCourseId(id: string) {
     return this.http.get<{ registers: any; message: string }>(
-      `${this.BACKEND_URL}register/${id}`
+      `${this.BACKEND_URL}register/c/${id}`
     );
   }
 
@@ -60,6 +60,19 @@ export class AdminService {
   deleteMessage(id: string) {
     return this.http.delete<{ message: any }>(
       `${this.BACKEND_URL}contact/${id}`
+    );
+  }
+
+  getRegistrationDetailById(id: string) {
+    return this.http.get<{ register: any; message: string }>(
+      `${this.BACKEND_URL}register/${id}`
+    );
+  }
+
+  updateRegisterStatus(id: string, status: string) {
+    return this.http.put<{ register: any; message: string }>(
+      `${this.BACKEND_URL}register/status`,
+      { id: id, status: status }
     );
   }
 }

@@ -28,14 +28,23 @@ export class CourseService {
     );
   }
 
-  updateCount(id: string) {
+  updateCount(id: string, count: number) {
     return this.http.put<{ course: any; message: string }>(
-      `${this.BACKEND_URL}course/count`,
-      id
+      `${this.BACKEND_URL}course/count/`,
+      { count: count, id: id }
     );
   }
 
-  getUserDetailByEmail(email: string) {
-    return this.http.get<{user: any; message: string}>(`${this.BACKEND_URL}user/email/${email}`)
+  getUserDetailByEmail(e: string) {
+    return this.http.get<{ user: any; message: string }>(
+      `${this.BACKEND_URL}user/email/${e}`
+    );
+  }
+
+  checkUserAlreadyRegistered(email: string, courseId: string) {
+    return this.http.post<{ register: any; message: string }>(
+      `${this.BACKEND_URL}register/check-registration`,
+      { email: email, courseId: courseId }
+    );
   }
 }

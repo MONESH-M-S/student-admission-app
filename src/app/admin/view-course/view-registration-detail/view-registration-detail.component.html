@@ -1,0 +1,33 @@
+<p-toast></p-toast>
+<section>
+  <h3>{{ data?.register.userName }}</h3>
+  <h3>{{ data?.register.email }}</h3>
+  <h3>{{ data?.register.registeredAt }}</h3>
+  <div class="dropdown">
+    <label for=""><h3 class="mb-0">Selec the Status:</h3></label>
+    <p-dropdown
+      [options]="status"
+      placeholder="Select the status"
+      [(ngModel)]="selectedStatus"
+      [showClear]="true"
+    ></p-dropdown>
+  </div>
+  <div class="button mt-3">
+    <button
+      mat-flat-button
+      color="primary"
+      *ngIf="!isLoading"
+      (click)="updateStatusValue()"
+    >
+      Update
+    </button>
+    <p-progressSpinner
+      [style]="{ width: '50px', height: '50px' }"
+      styleClass="custom-spinner"
+      strokeWidth="8"
+      fill="var(--surface-ground)"
+      animationDuration=".5s"
+      *ngIf="isLoading"
+    ></p-progressSpinner>
+  </div>
+</section>

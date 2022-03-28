@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AdminService } from '../admin.service';
 import * as FileSaver from 'file-saver';
+import { MatDialog } from '@angular/material/dialog';
+import { ViewRegistrationDetailComponent } from './view-registration-detail/view-registration-detail.component';
 
 @Component({
   selector: 'app-view-course',
@@ -16,13 +18,14 @@ export class ViewCourseComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private adminService: AdminService
+    private adminService: AdminService,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
       if (params['cid']) {
-        this.id = params['id'];
+        this.id = params['cid'];
         this.adminService
           .getCourseDetailById(params['cid'])
           .subscribe((res) => {
@@ -30,6 +33,43 @@ export class ViewCourseComponent implements OnInit {
               this.courseDetail = res.course;
             }
           });
+
+        this.adminService
+          .getRegistrationDetailsByCourseId(this.id)
+          .subscribe((res) => {
+            if (res.registers.length > 0) {
+              this.isRegistrationAvailable = true;
+              this.registrationDetails = res.registers;
+            } else {
+              this.isRegistrationAvailable = false;
+            }
+          });
+      }
+    });
+  }
+
+  onViewRegistrationDialog(id: string) {
+    this.adminService.getRegistrationDetailById(id).subscribe((res) => {
+      if (res.register != []) {
+        const data = res.register[0];
+        let dialogRef = this.dialog.open(ViewRegistrationDetailComponent, {
+          data: { register: data },
+          width: '500px',
+          height: '500px',
+          hasBackdrop: true,
+        });
+        dialogRef.afterClosed().subscribe((res) => {
+          this.adminService
+            .getRegistrationDetailsByCourseId(this.id)
+            .subscribe((res) => {
+              if (res.registers.length > 0) {
+                this.isRegistrationAvailable = true;
+                this.registrationDetails = res.registers;
+              } else {
+                this.isRegistrationAvailable = false;
+              }
+            });
+        });
       }
     });
   }
@@ -54,14 +94,5 @@ export class ViewCourseComponent implements OnInit {
       type: EXCEL_TYPE,
     });
     FileSaver.saveAs(data, fileName + '_' + 'eie' + EXCEL_EXTENSION);
-
-    this.adminService.getRegistrationDetailsById(this.id).subscribe((res) => {
-      if (res.registers.length > 0) {
-        this.isRegistrationAvailable = true;
-        this.registrationDetails = res.registers;
-      } else {
-        this.isRegistrationAvailable = false;
-      }
-    });
   }
 }

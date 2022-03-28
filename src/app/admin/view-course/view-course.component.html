@@ -63,7 +63,7 @@
                   <p>{{ detail.userName | titlecase }}</p>
                 </td>
                 <td>{{ detail.email }}</td>
-                <td>{{ detail.registerAt }}</td>
+                <td>{{ detail.registeredAt }}</td>
                 <td>
                   <button
                     pButton
@@ -71,6 +71,26 @@
                     type="button"
                     icon="pi pi-eye"
                     class="p-button-rounded p-button-info p-button-outlined mr-2"
+                    (click)="onViewRegistrationDialog(detail._id)"
+                    *ngIf="detail.status === null"
+                  ></button>
+                  <button
+                    pButton
+                    pRipple
+                    type="button"
+                    icon="pi pi-check"
+                    class="p-button-success p-button-info p-button-outlined mr-2"
+                    pTooltip="Registeration Has been Accepted!"
+                    *ngIf="detail.status === 'Accept'"
+                  ></button>
+                  <button
+                    pButton
+                    pRipple
+                    type="button"
+                    icon="pi pi-times"
+                    class="p-button-danger p-button-info p-button-outlined mr-2"
+                    pTooltip="Registeration Has been Rejected!"
+                    *ngIf="detail.status === 'Reject'"
                   ></button>
                   <button
                     pButton
