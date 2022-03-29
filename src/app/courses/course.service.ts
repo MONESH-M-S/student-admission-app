@@ -21,7 +21,7 @@ export class CourseService {
     );
   }
 
-  registerForACourse(form: { userName: string; email: string }) {
+  registerForACourse(form: any) {
     return this.http.post<{ register: any; message: string }>(
       `${this.BACKEND_URL}register/`,
       form
