@@ -35,7 +35,11 @@
             <td>
               {{ register.registeredAt }}
             </td>
-            <td>{{ register.status }}ed</td>
+            <td>
+              {{ register.status }}
+              <span *ngIf="register.status != null">ed</span>
+              <span *ngIf="register.status == null">Pending</span>
+            </td>
             <td>
               <button
                 pButton

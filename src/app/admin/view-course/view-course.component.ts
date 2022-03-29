@@ -55,7 +55,7 @@ export class ViewCourseComponent implements OnInit {
         let dialogRef = this.dialog.open(ViewRegistrationDetailComponent, {
           data: { register: data },
           width: '500px',
-          height: '500px',
+          height: '380px',
           hasBackdrop: true,
         });
         dialogRef.afterClosed().subscribe((res) => {

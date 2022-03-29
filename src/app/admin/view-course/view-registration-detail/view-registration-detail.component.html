@@ -1,10 +1,15 @@
 <p-toast></p-toast>
-<section>
-  <h3>{{ data?.register.userName }}</h3>
-  <h3>{{ data?.register.email }}</h3>
-  <h3>{{ data?.register.registeredAt }}</h3>
+<section class="text-center">
+<div class="close-icon" mat-dialog-actions>
+  <button mat-icon-button color="warn" mat-dialog-close>
+    <mat-icon>cancel</mat-icon>
+  </button>
+</div>
+  <h2 class="mb-0 mb-1">{{ data?.register.userName }}</h2>
+  <h2 class="mb-0 mb-1">( {{ data?.register.email }} )</h2>
+  <h3>Registered At: {{ data?.register.registeredAt }}</h3>
   <div class="dropdown">
-    <label for=""><h3 class="mb-0">Selec the Status:</h3></label>
+    <label for=""><h2 class="mb-0">Select the Status:</h2></label>
     <p-dropdown
       [options]="status"
       placeholder="Select the status"
