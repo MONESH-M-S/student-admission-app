@@ -48,6 +48,7 @@ export class CourseApplyComponent implements OnInit {
           const f = {
             userName: this.form.value.userName,
             email: this.form.value.email,
+            image: this.form.value.image,
             courseName: this.data.courseDetail.courseName,
             courseId: this.data.courseDetail._id,
             userId: this.userId,
@@ -106,23 +107,24 @@ export class CourseApplyComponent implements OnInit {
       });
   }
 
-  // onUpload(event: any) {
-  //   console.log('event')
-  //   const file = event.files[0];
-  //   this.form.patchValue({ image: file });
-  //   this.form.get('image').updateValueAndValidity();
-  //   const reader = new FileReader();
-  //   reader.onload = () => {
-  //     this.imageDisplay = reader.result as string;
-  //   };
-  //   reader.readAsDataURL(file);
-  // }
+  onUpload(event: any) {
+    console.log('event');
+    const file = event.files[0];
+    this.form.patchValue({ image: file });
+    this.form.get('image').updateValueAndValidity();
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.imageDisplay = reader.result as string;
+    };
+    reader.readAsDataURL(file);
+  }
 
   private _initForm(f: any) {
     if (f == null) {
       this.form = this.formBuilder.group({
         userName: ['', Validators.required],
         email: ['', [Validators.required, Validators.email]],
+        image: [''],
       });
     } else {
       this.form = this.formBuilder.group({

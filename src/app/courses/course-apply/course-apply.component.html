@@ -24,7 +24,7 @@
           />
         </div>
       </div>
-      <!-- <div class="col-12">
+      <div class="col-12 flex justify-content-evenly">
         <p-fileUpload
           mode="basic"
           name="demo"
@@ -32,23 +32,12 @@
           maxFileSize="5000000"
           customUpload="true"
           (uploadHandler)="onUpload($event)"
-          chooseLabel="Aadhar card"
+          chooseLabel="Insert Certificate"
           [auto]="true"
         >
         </p-fileUpload>
-      </div> -->
-      <!-- <div class="col-12">
-      <p-fileUpload
-        #fubauto
-        mode="basic"
-        name="demo[]"
-        accept="image/*"
-        maxFileSize="1000000"
-        (onUpload)="onUpload($event)"
-        [auto]="true"
-        chooseLabel="Aadhar card"
-      ></p-fileUpload>
-    </div> -->
+        <img [src]="imageDisplay" [width]="80" alt="" />
+      </div>
     </div>
     <div class="col-12" *ngIf="!isLoading">
       <button

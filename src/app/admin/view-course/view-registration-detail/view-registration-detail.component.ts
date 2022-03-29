@@ -65,6 +65,11 @@ export class ViewRegistrationDetailComponent implements OnInit {
                   this.isLoading = false;
                 }
               });
+          } else {
+            window.setTimeout(() => {
+              this.isLoading = false;
+              this.dialogRef.close();
+            }, 2500);
           }
         } else {
           this.messageService.add({
