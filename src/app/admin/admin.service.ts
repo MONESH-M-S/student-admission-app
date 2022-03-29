@@ -69,10 +69,10 @@ export class AdminService {
     );
   }
 
-  updateRegisterStatus(id: string, status: string) {
+  updateRegisterStatus(id: string, email: string, status: string) {
     return this.http.put<{ register: any; message: string }>(
       `${this.BACKEND_URL}register/status`,
-      { id: id, status: status }
+      { id: id, status: status, email: email }
     );
   }
 

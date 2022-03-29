@@ -26,7 +26,11 @@ export class ViewRegistrationDetailComponent implements OnInit {
     this.isLoading = true;
     if (this.selectedStatus === '') return (this.isLoading = false);
     this.adminService
-      .updateRegisterStatus(this.data.register._id, this.selectedStatus)
+      .updateRegisterStatus(
+        this.data.register._id,
+        this.data.register.email,
+        this.selectedStatus
+      )
       .subscribe((res) => {
         if (res.register != null) {
           if (this.selectedStatus === 'Accept') {
